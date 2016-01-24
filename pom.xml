@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.rockjs</groupId>
+	<artifactId>chart</artifactId>
+	<version>r01</version>
+	<name>chart</name>
+	<description>Charts developed in HTML5 Canvas, based on rock framework</description>
+
+	<developers>
+		<developer>
+			<name>Luis Alberto Jiménez</name>
+			<email>lajimenez.rock@gmail.com</email>
+		</developer>
+	</developers>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<source.path>src/main/js</source.path>
+		<source.test.path>src/test/js</source.test.path>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.google.javascript</groupId>
+			<artifactId>closure-compiler</artifactId>
+			<version>r2388</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.codehaus.mojo</groupId>
+										<artifactId>exec-maven-plugin</artifactId>
+										<versionRange>[1.0,)</versionRange>
+										<goals>
+											<goal>exec</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<!-- Create target dir -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<phase>initialize</phase>
+						<configuration>
+							<tasks>
+								<mkdir dir="target"/>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Closure Compiler configuration -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2</version>
+				<configuration>
+					<executable>java</executable>
+					<workingDirectory>${project.dir}</workingDirectory>
+					<arguments>
+						<argument>-classpath</argument>
+						<classpath>
+							<dependency>args4j:args4j</dependency>
+							<dependency>org.json:json</dependency>
+							<dependency>com.google.guava:guava</dependency>
+							<dependency>com.google.javascript:closure-compiler</dependency>
+						</classpath>
+						<argument>com.google.javascript.jscomp.CommandLineRunner</argument>
+
+						<argument>--compilation_level</argument>
+						<argument>SIMPLE_OPTIMIZATIONS</argument>
+
+						<argument>--js_output_file</argument>
+						<argument>target/${project.name}.min.js</argument>
+
+						<argument>--flagfile</argument>
+						<argument>google-closure-files.txt</argument>
+					</arguments>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Generate JSDoc -->
+			<plugin>
+				<groupId>gr.abiss.mvn.plugins</groupId>
+				<artifactId>maven-jstools-plugin</artifactId>
+				<version>0.7</version>
+				<configuration>
+					<jsDir>${source.path}</jsDir>
+					<includePrivate>true</includePrivate>
+					<includeUndocumented>true</includeUndocumented>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>
