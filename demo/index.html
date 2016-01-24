@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Chart Test Window</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script type="text/javascript" src="https://lajimenez.github.com/rock.js/release/rock.r1.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="https://lajimenez.github.com/chart/release/chart.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="init.js" charset="UTF-8"></script>
+</head>
+<body onload="init('divChart', 600, 500);">
+<table>
+    <tr>
+        <td>
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <b>Mandatory</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Title
+                    </td>
+                    <td>
+                        <input type="text" id="title"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Domain
+                    </td>
+                    <td>
+                        <input type="text" id="domain"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Units
+                    </td>
+                    <td>
+                        <input type="text" id="units"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Values
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <textarea id="values" rows="10" cols="50"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <br/>
+                        <b>Other config values (optional)</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Begin range
+                    </td>
+                    <td>
+                        <input type="text" id="beginRange"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        End range
+                    </td>
+                    <td>
+                        <input type="text" id="endRange"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Round unit in guide lines
+                    </td>
+                    <td>
+                        <input type="checkbox" id="round"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Round unit labels in guide lines
+                    </td>
+                    <td>
+                        <input type="checkbox" id="roundLabels"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Do animation
+                    </td>
+                    <td>
+                        <input type="checkbox" id="doAnimation"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <br/>
+                        <b>Style (optional)</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Font
+                    </td>
+                    <td>
+                        <input type="text" id="font"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Font color (#RRGGBB in hex)
+                    </td>
+                    <td>
+                        <input type="text" id="fontColor"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Bar color (#RRGGBB in hex)
+                    </td>
+                    <td>
+                        <input type="text" id="barColor"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Selected bar color (#RRGGBB in hex)
+                    </td>
+                    <td>
+                        <input type="text" id="selectedBarColor"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Axis color (#RRGGBB in hex)
+                    </td>
+                    <td>
+                        <input type="text" id="axisColor"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Background color (#RRGGBB in hex)
+                    </td>
+                    <td>
+                        <input type="text" id="backgroundColor"/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <br/>
+                        <button type="button" onclick="setData()">Update Chart</button>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <div id="divChart"></div>
+        </td>
+    </tr>
+</table>
+<i>There are more style options despite you can't test with this UI (like different font sizes and font colors)</i>
+</body>
+</html>
